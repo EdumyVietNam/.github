@@ -1,6 +1,6 @@
-# EDUMY - Nền tảng E-learning tích hợp quản lý khóa học và đánh giá trực tuyến
+# EDUMY — Nền tảng E-learning tích hợp quản lý khóa học và đánh giá trực tuyến
 
-![.NET 8](https://img.shields.io/badge/.NET-8-512BD4?logo=dotnet) ![React 18](https://img.shields.io/badge/React-18-61DAFB?logo=react) ![Flutter 3](https://img.shields.io/badge/Flutter-3-02569B?logo=flutter) ![MySQL 8](https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql) ![Redis](https://img.shields.io/badge/Redis-7-DC382D?logo=redis) ![Docker](https://img.shields.io/badge/Docker-24-2496ED?logo=docker) ![Nginx](https://img.shields.io/badge/Nginx-1.26-009639?logo=nginx) ![JWT](https://img.shields.io/badge/Auth-JWT-black?logo=jsonwebtokens) ![License](https://img.shields.io/badge/license-MIT-green)
+![.NET 8](https://img.shields.io/badge/.NET-8-512BD4?logo=dotnet) ![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react) ![Flutter](https://img.shields.io/badge/Flutter-Dart_3.10-02569B?logo=flutter) ![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql) ![Docker](https://img.shields.io/badge/Docker-24+-2496ED?logo=docker) ![Nginx 1.27](https://img.shields.io/badge/Nginx-1.27-009639?logo=nginx) ![JWT](https://img.shields.io/badge/Auth-JWT-black?logo=jsonwebtokens) ![License](https://img.shields.io/badge/license-GPL--3.0-green)
 
 ---
 
@@ -14,23 +14,21 @@
 - [Khảo sát hệ thống liên quan](#khảo-sát-hệ-thống-liên-quan)
 - [Khoảng trống công nghệ & Điểm mới](#khoảng-trống-công-nghệ--điểm-mới)
 - [Kiến trúc hệ thống](#kiến-trúc-hệ-thống)
+- [Cấu trúc Repository](#cấu-trúc-repository)
 - [Phân tích yêu cầu chức năng](#phân-tích-yêu-cầu-chức-năng)
-  - [Authentication Module](#1-authentication-module)
-  - [System Management Module](#2-system-management-module)
-  - [Payment Module](#3-payment-module)
-  - [Course Management Module](#4-course-management-module)
-  - [Artificial Intelligence Module](#5-artificial-intelligence-module)
 - [Yêu cầu phi chức năng](#yêu-cầu-phi-chức-năng)
 - [Thiết kế cơ sở dữ liệu](#thiết-kế-cơ-sở-dữ-liệu)
-- [Công nghệ sử dụng](#công-nghệ-sử-dụng)
-  - [Backend - .NET 8](#tầng-xử-lý-backend-với-net-core)
-  - [Frontend Web - React Vite](#tầng-giao-diện-frontend-nền-tảng-web-với-react-vite)
-  - [Mobile - Flutter](#tầng-giao-diện-frontend-nền-tảng-mobile-với-flutter)
+- [Ngăn xếp công nghệ (Tech Stack)](#ngăn-xếp-công-nghệ-tech-stack)
+- [Cấu hình & Triển khai](#cấu-hình--triển-khai)
+- [DevOps & CI/CD](#devops--cicd)
+- [Tình trạng hiện tại dự án](#tình-trạng-hiện-tại-dự-án)
 - [Kế hoạch thực hiện](#kế-hoạch-thực-hiện)
 - [Liên hệ](#liên-hệ)
 
 ---
+
 <a name="giới-thiệu"></a>
+
 ## Giới thiệu
 
 **EDUMY** là đề tài khóa luận tốt nghiệp của nhóm sinh viên Khoa Công nghệ Thông tin, Trường Đại học Công Thương Thành phố Hồ Chí Minh (HUIT), với mục tiêu **xây dựng nền tảng E-learning tích hợp quản lý khóa học và đánh giá trực tuyến**.
@@ -40,21 +38,23 @@ Trong bối cảnh nền giáo dục toàn cầu đang trải qua giai đoạn c
 EDUMY ra đời nhằm giải quyết bài toán đó bằng kiến trúc **Microservices** hiện đại, kết hợp trải nghiệm Front-end mượt mà với sự khắt khe trong đánh giá năng lực học thuật, mang lại một giải pháp toàn diện cho các cơ sở giáo dục quy mô vừa và nhỏ.
 
 <a name="thông-tin-đề-tài"></a>
+
 ## Thông tin đề tài
 
-| Mục | Nội dung |
-|------|----------|
-| **Tên đề tài** | Xây dựng nền tảng E-learning tích hợp quản lý khóa học và đánh giá trực tuyến |
-| **Tên hệ thống** | EDUMY |
-| **Loại hình** | Khóa luận tốt nghiệp |
-| **Sinh viên thực hiện** | Quang Nhật Hưng (MSSV: 2001230328) |
-| **Cộng tác viên** | Nguyễn Châu Kha (MSSV: 2001230359), Nguyễn Văn Anh Tuấn (MSSV: 2001230863) |
-| **Giảng viên hướng dẫn** | TS. Nguyễn Thị Bích Ngân |
-| **Đơn vị** | Khoa Công nghệ Thông tin — Trường Đại học Công Thương TP.HCM (HUIT) |
-| **Thời gian thực hiện** | Tháng 07/2026 – Tháng 11/2026 (5 tháng) |
-| **Trang web giới thiệu** | [edumy.nhathungdev.site](https://edumy.nhathungdev.site) |
+| Mục                      | Nội dung                                                                      |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| **Tên đề tài**           | Xây dựng nền tảng E-learning tích hợp quản lý khóa học và đánh giá trực tuyến |
+| **Tên hệ thống**         | EDUMY                                                                         |
+| **Loại hình**            | Khóa luận tốt nghiệp                                                          |
+| **Sinh viên thực hiện**  | Quang Nhật Hưng (MSSV: 2001230328)                                            |
+| **Cộng tác viên**        | Nguyễn Châu Kha (MSSV: 2001230359), Nguyễn Văn Anh Tuấn (MSSV: 2001230863)    |
+| **Giảng viên hướng dẫn** | TS. Nguyễn Thị Bích Ngân                                                      |
+| **Đơn vị**               | Khoa Công nghệ Thông tin — Trường Đại học Công Thương TP.HCM (HUIT)           |
+| **Thời gian thực hiện**  | Tháng 07/2026 – Tháng 11/2026 (5 tháng)                                       |
+| **Trang web giới thiệu** | [edumy.nhathungdev.site](https://edumy.nhathungdev.site)                      |
 
 <a name="bối-cảnh--động-lực"></a>
+
 ## Bối cảnh & Động lực
 
 ### Thực trạng
@@ -79,6 +79,7 @@ Việc lựa chọn đề tài xuất phát từ mong muốn vận dụng các k
 - Kỹ năng triển khai và vận hành hệ thống (DevOps)
 
 <a name="mục-tiêu-đề-tài"></a>
+
 ## Mục tiêu đề tài
 
 ### Mục tiêu tổng quát
@@ -104,6 +105,7 @@ Nghiên cứu, phân tích, thiết kế và xây dựng thành công nền tả
 5. **Kiểm thử và triển khai**: Kiểm thử toàn diện các luồng chức năng, triển khai lên môi trường thực tế, đánh giá hiệu năng chịu tải.
 
 <a name="đối-tượng--phạm-vi-nghiên-cứu"></a>
+
 ## Đối tượng & Phạm vi nghiên cứu
 
 ### Đối tượng nghiên cứu
@@ -114,11 +116,12 @@ Ba trụ cột chính của hệ thống giáo dục trực tuyến:
 
 2. **Nhóm đối tượng người dùng**: Quản trị viên (Admin), Giảng viên (Instructor), Học viên (Student) — phân tích hành vi và kỳ vọng về UX/UI.
 
-3. **Công nghệ nền tảng**: Framework lập trình Web (React), Mobile (Flutter), Backend (.NET 8), kỹ thuật xây dựng kiến trúc Microservices, quản trị cơ sở dữ liệu (MySQL + Redis).
+3. **Công nghệ nền tảng**: Framework lập trình Web (React), Mobile (Flutter), Backend (.NET 8), kỹ thuật xây dựng kiến trúc Microservices, quản trị cơ sở dữ liệu (PostgreSQL).
 
 ### Phạm vi nghiên cứu
 
 **Phạm vi chức năng**:
+
 - Quản lý tài khoản người dùng (đăng ký, đăng nhập, phân quyền)
 - Quản trị vòng đời khóa học (tạo, sửa, xóa, xuất bản)
 - Cung cấp không gian tương tác tài liệu học tập (video, PDF, Slide)
@@ -127,10 +130,12 @@ Ba trụ cột chính của hệ thống giáo dục trực tuyến:
 - Trợ lý ảo AI và tự động sinh đề thi
 
 **Giới hạn** (không nằm trong phạm vi):
+
 - Công cụ họp trực tuyến Video Call thời gian thực
 - Thuật toán AI giám sát gian lận thi cử phức tạp
 
 <a name="khảo-sát-hệ-thống-liên-quan"></a>
+
 ## Khảo sát hệ thống liên quan
 
 Để định hình kiến trúc và tính năng cốt lõi cho EDUMY, nhóm thực hiện đã khảo sát ba nền tảng E-learning tiêu biểu, đại diện cho ba triết lý thiết kế khác nhau:
@@ -138,11 +143,13 @@ Ba trụ cột chính của hệ thống giáo dục trực tuyến:
 ### 1. Moodle — LMS Open-source truyền thống
 
 **Ưu điểm**:
+
 - Hệ sinh thái Plugin khổng lồ, cho phép tùy biến sâu
 - Phổ biến nhất trong môi trường học thuật
 - Cộng đồng người dùng lớn, tài liệu phong phú
 
 **Nhược điểm**:
+
 - Kiến trúc Back-end **Monolithic** thế hệ cũ
 - Cồng kềnh, tiêu tốn nhiều tài nguyên Server
 - Nút thắt cổ chai (Bottleneck) khi scale đột ngột trong các kỳ thi tập trung
@@ -151,11 +158,13 @@ Ba trụ cột chính của hệ thống giáo dục trực tuyến:
 ### 2. Canvas — Cloud LMS hiện đại
 
 **Ưu điểm**:
+
 - Vận hành trên nền tảng điện toán đám mây
 - Thiết kế lấy người dùng làm trung tâm (User-centric Design)
 - Hệ thống API phong phú, UI/UX tốt cho giáo dục chính quy
 
 **Nhược điểm**:
+
 - Mô hình SaaS đi kèm **chi phí vận hành rất cao**
 - Mã nguồn đóng, hạn chế khả năng can thiệp Database
 - Không phù hợp với các tổ chức giáo dục vừa và nhỏ
@@ -163,16 +172,19 @@ Ba trụ cột chính của hệ thống giáo dục trực tuyến:
 ### 3. Udemy — MOOC Marketplace thương mại
 
 **Ưu điểm**:
+
 - Kiến trúc **Microservices** chịu tải cực tốt
 - Hàng triệu luồng Streaming video đồng thời
 - Trải nghiệm người dùng (UX) cực kỳ mượt mà
 
 **Nhược điểm**:
+
 - Công cụ kiểm tra đánh giá rất sơ sài (chủ yếu trắc nghiệm đơn giản)
 - Thiếu tính khắt khe, minh bạch trong đánh giá
 - Không có cơ sở giám sát quá trình học tập theo chuẩn hàn lâm
 
 <a name="khoảng-trống-công-nghệ--điểm-mới"></a>
+
 ## Khoảng trống công nghệ & Điểm mới
 
 ### Khoảng trống cần giải quyết
@@ -194,6 +206,7 @@ Ba trụ cột chính của hệ thống giáo dục trực tuyến:
 4. **Chi phí tối ưu**: Tận dụng công nghệ mã nguồn mở và miễn phí, phù hợp với ngân sách của các cơ sở đào tạo vừa và nhỏ.
 
 <a name="kiến-trúc-hệ-thống"></a>
+
 ## Kiến trúc hệ thống
 
 EDUMY được thiết kế theo kiến trúc **Microservices**, chia nhỏ hệ thống thành các dịch vụ nghiệp vụ hoạt động hoàn toàn độc lập, giúp bảo trì và mở rộng thuận lợi hơn so với khối mã nguồn Monolithic truyền thống.
@@ -201,111 +214,202 @@ EDUMY được thiết kế theo kiến trúc **Microservices**, chia nhỏ hệ
 ### Sơ đồ kiến trúc tổng thể
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                         CLIENT LAYER                         │
-│                                                              │
-│  ┌─────────────────┐    ┌──────────────────────────────────┐ │
-│  │   Web Browser    │    │        Mobile App (Flutter)      │ │
-│  │  (React + Vite)  │    │     iOS & Android (Native)       │ │
-│  │  Admin/Instructor│    │          Student                  │ │
-│  └────────┬─────────┘    └──────────────┬───────────────────┘ │
-└───────────┼─────────────────────────────┼─────────────────────┘
-            │ HTTPS / RESTful API         │ HTTPS / RESTful API
-┌───────────▼─────────────────────────────▼─────────────────────┐
-│                      API GATEWAY LAYER                        │
-│                                                               │
-│  ┌─────────────────────────────────────────────────────────┐  │
-│  │                     Nginx Server                         │  │
-│  │  • SSL/TLS Termination    • Load Balancing (Round-Robin) │  │
-│  │  • Rate Limiting          • Request Routing              │  │
-│  │  • Reverse Proxy          • Static File Serving          │  │
-│  └─────────────────────────────────────────────────────────┘  │
-└───────────────────────────┬───────────────────────────────────┘
-                            │
-┌───────────────────────────▼───────────────────────────────────┐
-│                     MICROSERVICES LAYER                       │
-│                                                               │
-│  ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌─────────┐ │
-│  │  Auth API  │  │ System API │  │ Payment API│  │Course   │ │
-│  │  .NET 8    │  │  .NET 8    │  │  .NET 8    │  │Mgmt API │ │
-│  │  JWT+RBAC  │  │  Admin     │  │  VNPAY QR  │  │ .NET 8  │ │
-│  └─────┬──────┘  └─────┬──────┘  └──────┬─────┘  └────┬────┘ │
-│        │               │                │             │      │
-│        └───────────────┼────────────────┼─────────────┘      │
-│                        │                │                    │
-│  ┌─────────────────────┴────────────────┴──────────────┐     │
-│  │                    AI Service                        │     │
-│  │        Chatbot RAG + Auto-generate Exam             │     │
-│  │        (Async Processing via Message Queue)         │     │
-│  └────────────────────────────────────────────────────┘     │
-└───────────────────────────┬───────────────────────────────────┘
-                            │
-┌───────────────────────────▼───────────────────────────────────┐
-│                      DATA LAYER                               │
-│                                                               │
-│  ┌─────────────────────┐    ┌─────────────────────────────┐   │
-│  │      MySQL 8        │    │       Redis 7               │   │
-│  │  (Relational DB)    │    │   (In-Memory Cache)         │   │
-│  │                     │    │                             │   │
-│  │  • Users & Profiles │    │  • Session State            │   │
-│  │  • Courses & Lessons│    │  • Exam Draft State         │   │
-│  │  • Question Banks   │    │  • Static Category Cache    │   │
-│  │  • Transactions     │    │  • Rate Limiting Counters   │   │
-│  │  • Quiz Results     │    │                             │   │
-│  └─────────────────────┘    └─────────────────────────────┘   │
-│                                                               │
-│  ┌─────────────────────────────────────────────────────────┐  │
-│  │                 Cloud Storage                           │  │
-│  │       Video (MP4), PDF, Slide, Images                   │  │
-│  └─────────────────────────────────────────────────────────┘  │
-└───────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                         CLIENT LAYER                             │
+│                                                                  │
+│  ┌──────────────────────┐    ┌──────────────────────────────────┐│
+│  │   Web Browser         │    │        Mobile App (Flutter)      ││
+│  │  (React 19 + Vite 8) │    │     iOS & Android (Dart 3.10)    ││
+│  │  Feature-Sliced Design│    │          (Scaffold)              ││
+│  └──────────┬────────────┘    └──────────────┬───────────────────┘│
+└─────────────┼────────────────────────────────┼───────────────────┘
+              │ HTTPS / RESTful API           │ HTTPS / RESTful API
+┌─────────────▼────────────────────────────────▼───────────────────┐
+│                      API GATEWAY LAYER                            │
+│                                                                   │
+│  ┌─────────────────────────────────────────────────────────────┐  │
+│  │                     Nginx 1.27-alpine                       │  │
+│  │  • TLS Termination (Cloudflare Full Strict)                 │  │
+│  │  • Reverse Proxy        • Request Routing                   │  │
+│  │  • Security Headers     • Static File Serving               │  │
+│  │  • Rate Limiting (backend) • SPA Fallback                   │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+└───────────────────────────────┬───────────────────────────────────┘
+                                │
+┌───────────────────────────────▼───────────────────────────────────┐
+│                     MICROSERVICES LAYER (4 services)               │
+│                                                                    │
+│  ┌────────────────┐ ┌────────────────┐ ┌──────────────┐ ┌───────┐│
+│  │ Authentication │ │     System     │ │   Payment    │ │Course ││
+│  │   Module       │ │   Management   │ │   Module     │ │ Mgmt  ││
+│  │   .NET 8       │ │   Module       │ │   .NET 8     │ │Module ││
+│  │   JWT+RBAC     │ │   .NET 8       │ │  VietQR/SePay│ │.NET 8 ││
+│  │   Port: 5083   │ │   Port: 5243   │ │  Port: 5299  │ │:5164  ││
+│  └───────┬────────┘ └───────┬────────┘ └──────┬───────┘ └───┬───┘│
+│          │                  │                  │             │    │
+│          └──────────────────┼──────────────────┼─────────────┘    │
+│                             │                  │                  │
+│  ┌──────────────────────────┼──────────────────┼──────────────┐   │
+│  │          Internal Communication: X-Internal-Token header    │   │
+│  └────────────────────────────────────────────────────────────┘   │
+│                                                                    │
+│  ┌────────────────────────────────────────────────────────────┐   │
+│  │              SignalR Notification Hub                       │   │
+│  │     (Real-time notifications via WebSocket)                 │   │
+│  └────────────────────────────────────────────────────────────┘   │
+└───────────────────────────────┬───────────────────────────────────┘
+                                │
+┌───────────────────────────────▼───────────────────────────────────┐
+│                         DATA LAYER                                 │
+│                                                                    │
+│  ┌──────────────────────────┐  ┌────────────────────────────────┐ │
+│  │     PostgreSQL 16        │  │       Supabase Storage         │ │
+│  │  (Relational Database)   │  │   (Object Storage - S3 API)    │ │
+│  │                          │  │                                │ │
+│  │  • Users & Profiles      │  │  • Video bài giảng (MP4)       │ │
+│  │  • Courses & Lessons     │  │  • Tài liệu PDF, Slide         │ │
+│  │  • Question Banks        │  │  • Hình ảnh, thumbnail         │ │
+│  │  • Transactions          │  │  • Tài nguyên bài giảng        │ │
+│  │  • Exam Results          │  │                                │ │
+│  │  • Catalog Data (CAT_*)  │  │                                │ │
+│  └──────────────────────────┘  └────────────────────────────────┘ │
+└────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Nguyên lý hoạt động
 
-1. **API Gateway (Nginx)** là điểm tiếp nhận duy nhất, chịu trách nhiệm:
-   - Giải mã SSL/TLS cho toàn bộ request
-   - Phân bổ đều lưu lượng bằng Load Balancing
-   - Thiết lập Rate Limiting chống DDoS/Brute-force
-   - Định tuyến request đến đúng Microservice
+1. **API Gateway (Nginx 1.27)** là điểm tiếp nhận duy nhất, chịu trách nhiệm:
+   - TLS Termination thông qua Cloudflare (Full Strict mode)
+   - Định tuyến request đến đúng Microservice theo URL prefix
+   - Bảo mật với Security Headers (HSTS, X-Frame-Options, X-Content-Type-Options)
+   - SPA Fallback cho Frontend, Static File Serving
 
-2. **Các Microservice** giao tiếp với nhau qua RESTful API nội bộ, đảm bảo hệ thống vận hành trơn tru ngay cả khi một service gặp sự cố.
+2. **Các Microservice** giao tiếp với nhau qua RESTful API nội bộ, sử dụng header `X-Internal-Token` để xác thực liên service, đảm bảo hệ thống vận hành trơn tru ngay cả khi một service gặp sự cố.
 
-3. **AI Service** hoạt động bất đồng bộ qua Message Queue để tránh gián đoạn trải nghiệm người dùng khi xử lý các tác vụ nặng.
+3. **SignalR Notification Hub** cung cấp khả năng thông báo real-time qua WebSocket cho người dùng.
+
+4. **PostgreSQL 16** là cơ sở dữ liệu duy nhất (shared database), tất cả 4 service truy cập chung nhưng mỗi service có DbContext riêng.
+
+<a name="cấu-trúc-repository"></a>
+
+## Cấu trúc Repository
+
+Dự án được tổ chức thành 4 thư mục chính, mỗi thư mục là một Git repository riêng biệt:
+
+```
+Edumy/
+├── BE/                                 # Backend - 4 Microservices .NET 8
+│   ├── AuthenticationModule/           # Xác thực & phân quyền (port 5083)
+│   │   ├── Presentation.Authentication.API/    # Entry point, Controllers
+│   │   ├── Presentation.Context/               # DbContext, DTOs, Migrations
+│   │   ├── Presentation.Services/              # Business logic
+│   │   ├── Presentation.Repository/            # Data access layer
+│   │   ├── Presentation.Models/                # Entity models
+│   │   ├── Presentation.Extensions/            # Autofac modules, Middlewares
+│   │   ├── Presentation.Common/                # Shared utilities
+│   │   ├── CommonLibrary/                      # Shared library
+│   │   ├── Tests/                              # Test project (scaffolded)
+│   │   ├── Dockerfile
+│   │   ├── .env / .env.example
+│   │   └── .github/workflows/                  # CI/CD pipelines
+│   │
+│   ├── CourseManagementModule/         # Quản lý khóa học (port 5164)
+│   │   └── (cấu trúc tương tự)
+│   │
+│   ├── PaymentModule/                  # Thanh toán (port 5299)
+│   │   └── (cấu trúc tương tự)
+│   │
+│   └── SystemManagementModule/         # Quản trị hệ thống (port 5243)
+│       └── (cấu trúc tương tự)
+│
+├── FE/                                 # Frontend
+│   ├── EWebsite/                       # React Web App (chính)
+│   │   ├── src/
+│   │   │   ├── app/                    # Entry point, routing, providers
+│   │   │   ├── pages/                  # Route-level components
+│   │   │   ├── widgets/                # Complex UI blocks
+│   │   │   ├── features/               # User-facing functionality
+│   │   │   ├── entities/               # Domain entities
+│   │   │   └── shared/                 # Reusable utilities, API, UI
+│   │   ├── Dockerfile
+│   │   ├── nginx.conf
+│   │   └── .github/workflows/
+│   │
+│   └── Emobile/                        # Flutter Mobile App (scaffold)
+│       └── lib/
+│           ├── main.dart
+│           └── shared/libs/l10n/       # Localization (vi/en)
+│
+├── Design/                             # Wireframe & Design System
+│   ├── index.html                      # Navigation hub
+│   ├── shared/                         # Design tokens, components, icons
+│   │   ├── buttons/                    # 4 button types (HTML)
+│   │   ├── layout/                     # 4 layout templates (HTML)
+│   │   ├── icons/                      # 442 SVG icons (14 categories)
+│   │   ├── Constants/                  # Colors (xlsx), Typography (PDF)
+│   │   └── references/entites/         # 32 C# entity model files
+│   └── Web/                            # 31 HTML prototype screens
+│       ├── Auth/       (6 screens)
+│       ├── Home/       (1 screen)
+│       ├── Course/     (5 screens)
+│       ├── Exam/       (6 screens)
+│       ├── Cart/       (2 screens)
+│       ├── User/       (4 screens)
+│       └── Instructor/ (7 screens)
+│
+└── Infra/                              # Infrastructure & Deployment
+    ├── docker-compose.yml              # 7 services orchestration
+    ├── nginx/
+    │   ├── conf.d/default.conf         # Reverse proxy config
+    │   └── ssl/                        # Cloudflare Origin Cert
+    ├── .env / .env.example             # Environment variables
+    ├── .github/workflows/cd.yml        # CD pipeline
+    └── scripts/cleanup.sh              # Docker image cleanup
+```
 
 <a name="phân-tích-yêu-cầu-chức-năng"></a>
+
 ## Phân tích yêu cầu chức năng
 
-Hệ thống EDUMY được chia thành 5 module chức năng chính, mỗi module đảm nhận một nhóm nghiệp vụ riêng biệt trong kiến trúc Microservices.
+Hệ thống EDUMY được chia thành 4 module Microservice hoạt động độc lập, mỗi module đảm nhận một nhóm nghiệp vụ riêng biệt.
 
 <a name="1-authentication-module"></a>
-### 1. Authentication Module
+
+### 1. Authentication Module (Port 5083)
 
 **Vai trò**: Người gác cổng của hệ thống, chịu trách nhiệm định danh người dùng và cấp phát quyền truy cập trước khi request được chuyển tiếp đến các service nghiệp vụ khác.
 
-**Cơ chế xác thực**: Token-based Authentication sử dụng **JSON Web Token (JWT)**. Khi xác thực thành công, hệ thống trả về Access Token (thời gian ngắn) và Refresh Token (thời gian dài), cho phép Client đính kèm vào Header của các lần gọi API tiếp theo.
+**Cơ chế xác thực**: Token-based Authentication sử dụng **JSON Web Token (JWT)** với khóa HMAC-SHA256. Khi xác thực thành công, hệ thống trả về Access Token (15 phút) và Refresh Token (7 ngày), cho phép Client đính kèm vào Header của các lần gọi API tiếp theo.
 
-**Phân quyền**: Mô hình **Role-Based Access Control (RBAC)** với 3 vai trò:
+**Phân quyền**: Mô hình **Role-Based Access Control (RBAC)** với 4 vai trò:
 
-| Vai trò | Quyền hạn chính |
-|---------|----------------|
-| **Quản trị viên (Admin)** | Quản lý người dùng, phê duyệt giảng viên, CRUD danh mục, thống kê toàn hệ thống, cấu hình API |
-| **Giảng viên (Instructor)** | CRUD khóa học, quản lý ngân hàng câu hỏi, tạo đề thi, chấm điểm, theo dõi doanh thu |
-| **Học viên (Student)** | Xem khóa học, làm bài kiểm tra, theo dõi tiến độ, chat với AI |
+| Vai trò                        | Quyền hạn chính                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------------- |
+| **Quản trị viên (Admin)**      | Quản lý người dùng, phê duyệt giảng viên, CRUD danh mục, thống kê toàn hệ thống |
+| **Người bảo trì (Maintainer)** | Hỗ trợ quản trị, phân quyền hạn chế                                             |
+| **Giảng viên (Instructor)**    | CRUD khóa học, quản lý ngân hàng câu hỏi, tạo đề thi, chấm điểm                 |
+| **Học viên (Student)**         | Xem khóa học, làm bài kiểm tra, theo dõi tiến độ                                |
 
-**Chức năng chi tiết**:
+**API Endpoints**:
 
-| Chức năng | Mô tả |
-|-----------|-------|
-| Đăng ký nội bộ | Email + Mật khẩu, gửi mã OTP kích hoạt tài khoản |
-| Đăng nhập nội bộ | Email + Mật khẩu, trả về JWT |
-| SSO | Đăng nhập qua Google Workspace / Microsoft Account |
-| Quên mật khẩu | Gửi email reset password |
-| Đổi mật khẩu | Yêu cầu mật khẩu cũ + mật khẩu mới |
-| Refresh Token | Cấp lại Access Token khi hết hạn |
-| Đăng xuất | Thu hồi Refresh Token, xóa session |
+| Method | Endpoint                                        | Auth             | Mô tả                            |
+| ------ | ----------------------------------------------- | ---------------- | -------------------------------- |
+| POST   | `/authen-module/api/v2/Auth/Register`           | Anonymous        | Đăng ký tài khoản (rate: 3/phút) |
+| POST   | `/authen-module/api/v2/Auth/Login`              | Anonymous        | Đăng nhập (rate: 5/phút)         |
+| POST   | `/authen-module/api/v2/Auth/ForgotPassword`     | Anonymous        | Quên mật khẩu (rate: 3/2phút)    |
+| POST   | `/authen-module/api/v2/Auth/ResetPassword`      | Anonymous        | Đặt lại mật khẩu                 |
+| POST   | `/authen-module/api/v2/Auth/Active`             | Anonymous        | Kích hoạt tài khoản              |
+| POST   | `/authen-module/api/v2/Auth/RefrestToken`       | Anonymous        | Làm mới Access Token             |
+| POST   | `/authen-module/api/v2/Auth/Logout/{userId}`    | Anonymous        | Đăng xuất                        |
+| POST   | `/authen-module/api/v2/Auth/ChangePassword`     | Authenticated    | Đổi mật khẩu                     |
+| GET    | `/authen-module/api/v2/Auth/GetProfile`         | Authenticated    | Xem hồ sơ người dùng             |
+| GET    | `/authen-module/api/v2/Google/GetGoogleAuthUrl` | Anonymous        | Lấy URL Google OAuth             |
+| POST   | `/authen-module/api/v2/Google/Web/Login`        | Anonymous        | Đăng nhập/đăng ký qua Google     |
+| POST   | `/authen-module/api/v2/User/Pagingnation`       | Admin/Maintainer | Danh sách người dùng phân trang  |
+| GET    | `/health`                                       | Anonymous        | Health check                     |
 
 **Luồng xác thực**:
+
 ```
 Client                    Auth Service                    Database
   │                          │                              │
@@ -323,59 +427,58 @@ Client                    Auth Service                    Database
   │    user, role}           │                              │
 ```
 
+**Cơ chế bảo mật**:
+
+- ASP.NET Core Identity với lockout (5 lần thử sai → khóa 15 phút)
+- Refresh Token lưu dưới dạng SHA-256 hash trong DB
+- Security Stamp Validation cho password reset và account activation
+- Token rotation: Refresh Token cũ bị vô hiệu hóa khi đăng nhập
+
 <a name="2-system-management-module"></a>
-### 2. System Management Module
+
+### 2. System Management Module (Port 5243)
 
 **Vai trò**: Trung tâm điều khiển dành riêng cho Admin, tập trung vào việc duy trì sự ổn định của hệ thống, quản lý thông tin định danh cấp cao và thiết lập tham số vận hành chung.
 
-| Chức năng | Mô tả |
-|-----------|-------|
-| Quản lý người dùng | Xem, tìm kiếm, khóa/mở khóa tài khoản |
-| Phê duyệt giảng viên | Workflow: Gửi yêu cầu → Xét duyệt → Approve/Reject kèm lý do |
-| CRUD danh mục | Tạo/sửa/xóa danh mục khóa học, tags |
-| Admin Dashboard | Biểu đồ tổng quan: số người dùng, khóa học, doanh thu |
-| Nhật ký hoạt động | Audit log: ghi lại toàn bộ thao tác quan trọng |
-| Phân quyền RBAC | Thiết lập quyền chi tiết cho từng vai trò |
-| Cấu hình hệ thống | API config, backup settings, tham số vận hành |
+**API Endpoints chính**:
 
-**Workflow phê duyệt giảng viên**:
-```
-Học viên               System                 Admin
-  │                      │                      │
-  │── Yêu cầu nâng cấp ──│                      │
-  │   (kèm hồ sơ)        │── Thông báo ─────────│
-  │                      │                      │
-  │                      │◄── Duyệt/Từ chối ────│
-  │                      │                      │
-  │◄── Thông báo kết quả─│                      │
-  │   (Approved/Rejected)│                      │
-```
+| Method | Endpoint                                        | Mô tả                    |
+| ------ | ----------------------------------------------- | ------------------------ |
+| PUT    | `/system-module/api/v2/Profile/{userId}`        | Cập nhật hồ sơ           |
+| PUT    | `/system-module/api/v2/Profile/{userId}/avatar` | Upload avatar            |
+| DELETE | `/system-module/api/v2/Profile/{id}`            | Soft-delete người dùng   |
+| PUT    | `/system-module/api/v2/Profile/{id}/restore`    | Khôi phục người dùng     |
+| GET    | `/system-module/hubs/notification`              | SignalR Notification Hub |
+| GET    | `/health`                                       | Health check             |
+
+**Controllers hiện có**: CatCourseCategory, CatCourseType, CatDocumentCategory, CatDocumentType, CatExamCategory, CatGradingRule, CatInstructorApplicationRequirement, CatNotificationType, CatProvince, CatSubjectCategory, CatTag, CatVoucherType, Course, Exam, InternalNotification.
+
+**Real-time**: SignalR Notification Hub cho phép推送 thông báo tức thời đến người dùng qua WebSocket.
 
 <a name="3-payment-module"></a>
-### 3. Payment Module
+
+### 3. Payment Module (Port 5299)
 
 **Vai trò**: Dịch vụ tài chính độc lập, chịu trách nhiệm quản lý toàn bộ vòng đời giao dịch từ khởi tạo đơn hàng, kết nối cổng thanh toán bên thứ ba, đến đối soát doanh thu.
 
-**Yêu cầu đặc thù**: Tính nhất quán dữ liệu tuyệt đối (ACID). Khi giao dịch thành công, Payment Module phát tín hiệu đến Course Module để tiến hành mở khóa (Enroll) nội dung cho học viên.
+**API Endpoints**:
 
-| Chức năng | Mô tả |
-|-----------|-------|
-| Khởi tạo đơn hàng | Tạo Order ID duy nhất, lưu thông tin giao dịch |
-| Thanh toán QR Code | Tích hợp VNPAY, tạo mã QR, xử lý bất đồng bộ |
-| Xử lý Webhook/IPN | Nhận callback từ cổng thanh toán, cập nhật trạng thái |
-| Quản lý giao dịch | Lịch sử mua hàng, tra cứu giao dịch |
-| Đối soát doanh thu | Thống kê doanh thu theo tháng/quý/năm |
-| Yêu cầu rút tiền | Giảng viên yêu cầu rút tiền về tài khoản ngân hàng |
-| Tỷ lệ ăn chia | Cấu hình % hoa hồng nền tảng / giảng viên |
+| Method | Endpoint                                     | Mô tả                   |
+| ------ | -------------------------------------------- | ----------------------- |
+| POST   | `/payment-module/api/v2/PaymentOrder/create` | Tạo đơn hàng với VietQR |
+| GET    | `/health`                                    | Health check            |
+
+**Cổng thanh toán**: **VietQR** thông qua **SePay** (chuyển khoản ngân hàng QR).
 
 **Luồng thanh toán**:
+
 ```
-Học viên              Payment Service             VNPAY            Course Service
+Học viên              Payment Service             SePay              Course Service
   │                        │                       │                    │
   │── Mua khóa học ────────│                       │                    │
   │                        │── Tạo Order ──────────│                    │
   │                        │   (Pending)           │                    │
-  │◄── Mã QR ──────────────│                       │                    │
+  │◄── Mã QR VietQR ──────│                       │                    │
   │                        │                       │                    │
   │── Quét QR thanh toán ──┼───────────────────────│                    │
   │                        │                       │                    │
@@ -389,349 +492,626 @@ Học viên              Payment Service             VNPAY            Course Ser
   │◄── Thông báo thành công────────────────────────┼────────────────────│
 ```
 
+**Entities liên quan**: PaymentOrder, PaymentTransaction, Voucher, UserVoucher, Enrollment, ExamEnrollment.
+
 <a name="4-course-management-module"></a>
-### 4. Course Management Module
+
+### 4. Course Management Module (Port 5164)
 
 **Vai trò**: Trái tim của toàn bộ nền tảng, quản lý vòng đời trọn vẹn của khóa học — từ tải lên tài nguyên, cấu hình học liệu, đến tương tác bài giảng và thực hiện đánh giá năng lực.
 
 #### Quản lý khóa học
 
 **Vòng đời khóa học**:
+
 ```
-Draft ──→ Review ──→ Published ──→ Archived
+Draft ──→ Active ──→ Published
   ↑          │            │
   └──────────┘            │
   (Chỉnh sửa)      Học viên truy cập
 ```
 
-| Chức năng | Mô tả |
-|-----------|-------|
-| CRUD khóa học | Tạo/sửa/xóa khóa học với metadata đầy đủ |
-| Cấu trúc học liệu | Tổ chức theo cấp bậc Section → Lesson |
-| Đa phương tiện | Hỗ trợ Video MP4, PDF, Slide, nội dung văn bản |
-| Quản lý trạng thái | Draft, Review, Published, Archived |
-| Cloud Storage | Liên kết lưu trữ tệp video dung lượng lớn |
+**Entities chính**: Course, CourseSection, Lesson, Resource, Video, Enrollment.
 
 #### Ngân hàng câu hỏi
 
 **4 định dạng câu hỏi**:
 
-| Định dạng | Chấm điểm | Ví dụ |
-|-----------|-----------|-------|
-| Trắc nghiệm 1 đáp án | Tự động | A, B, C, D chỉ 1 đáp án đúng |
-| Trắc nghiệm nhiều đáp án | Tự động | Chọn tất cả đáp án đúng |
-| Đúng / Sai | Tự động | True/False |
-| Tự luận (Essay) | Thủ công | Viết đoạn văn, giảng viên chấm |
+| Định dạng                | Chấm điểm | Ví dụ                          |
+| ------------------------ | --------- | ------------------------------ |
+| Trắc nghiệm 1 đáp án     | Tự động   | A, B, C, D chỉ 1 đáp án đúng   |
+| Trắc nghiệm nhiều đáp án | Tự động   | Chọn tất cả đáp án đúng        |
+| Đúng / Sai               | Tự động   | True/False                     |
+| Tự luận (Essay)          | Thủ công  | Viết đoạn văn, giảng viên chấm |
 
-| Chức năng | Mô tả |
-|-----------|-------|
-| CRUD câu hỏi | Tạo/sửa/xóa từng câu hỏi |
-| Import/Export | Nhập xuất hàng loạt (CSV/Excel) |
-| Gán thang điểm | Cấu hình điểm cho từng câu hỏi |
-| Phân loại | Gán danh mục, tags, độ khó |
+**Entities liên quan**: Question, QuestionOption, Exam, ExamQuestion, ExamAttempt, AttemptQuestion, AttemptAnswer.
 
 #### Bài kiểm tra & Chấm điểm
 
-| Chức năng | Mô tả |
-|-----------|-------|
-| Tạo đề thi | Chọn câu hỏi từ ngân hàng, cấu hình tham số |
-| Bộ đếm thời gian thực | Đếm ngược, tự động thu bài khi hết giờ |
-| Xáo trộn đề | Random thứ tự câu hỏi và đáp án |
-| Tự động lưu nháp | Lưu bài làm theo từng phút |
-| Chấm tự động | Trắc nghiệm + Đúng/Sai: đối chiếu đáp án tức thời |
-| Chấm thủ công | Tự luận: giảng viên chấm kèm phản hồi |
-| Thống kê kết quả | Báo cáo điểm số, biểu đồ phân tích |
+| Chức năng             | Mô tả                                             |
+| --------------------- | ------------------------------------------------- |
+| Tạo đề thi            | Chọn câu hỏi từ ngân hàng, cấu hình tham số       |
+| Bộ đếm thời gian thực | Đếm ngược, tự động thu bài khi hết giờ            |
+| Xáo trộn đề           | Random thứ tự câu hỏi và đáp án                   |
+| Tự động lưu nháp      | Lưu bài làm theo từng phút                        |
+| Chấm tự động          | Trắc nghiệm + Đúng/Sai: đối chiếu đáp án tức thời |
+| Chấm thủ công         | Tự luận: giảng viên chấm kèm phản hồi             |
+| Thống kê kết quả      | Báo cáo điểm số, biểu đồ phân tích                |
 
-<a name="5-artificial-intelligence-module"></a>
-### 5. Artificial Intelligence Module
+#### Upload tài nguyên
 
-**Vai trò**: Dịch vụ nâng cao hoạt động độc lập, ứng dụng Machine Learning và NLP để giảm tải công việc thủ công cho giảng viên, mang đến trải nghiệm học tập cá nhân hóa 24/7 cho học viên.
-
-**Cơ chế hoạt động**: Các tác vụ AI giao tiếp với hệ thống lõi qua cơ chế **bất đồng bộ** (Message Queue), đảm bảo không làm gián đoạn trải nghiệm chung của nền tảng.
-
-#### Tính năng 1: Trợ lý ảo học tập (Chatbot RAG)
-
-- **Công nghệ**: Retrieval-Augmented Generation (RAG)
-- **Cách hoạt động**: Khi học viên đặt câu hỏi, Chatbot truy xuất tài liệu khóa học có liên quan (PDF, Slide, Transcript), đọc hiểu ngữ cảnh và sinh câu trả lời chính xác.
-- **Lợi ích**: Hỗ trợ 24/7, giải đáp theo đúng nội dung khóa học, không trả lời chung chung.
-
-#### Tính năng 2: Tự động tạo bài kiểm tra
-
-- **Công nghệ**: NLP, Text Summarization, Question Generation
-- **Cách hoạt động**:
-  1. Giảng viên tải lên tài liệu (PDF, Slide) hoặc file Transcript video
-  2. Hệ thống phân tích ngữ nghĩa, trích xuất ý chính
-  3. Tự động sinh câu hỏi trắc nghiệm kèm đáp án
-- **Lợi ích**: Tiết kiệm thời gian soạn đề, câu hỏi bám sát nội dung bài giảng
-
-| Chức năng | Mô tả |
-|-----------|-------|
-| Chatbot hỏi đáp | Trò chuyện theo ngữ cảnh khóa học |
-| Trích xuất ý chính | Phân tích tài liệu, tóm tắt nội dung |
-| Sinh câu hỏi trắc nghiệm | Tự động tạo câu hỏi kèm đáp án |
-| Xử lý bất đồng bộ | Queue tác vụ, không block UI |
-| Tích hợp đa nguồn | PDF, Slide, Video Transcript |
+| Chức năng        | Mô tả                                         |
+| ---------------- | --------------------------------------------- |
+| Upload Video     | Video bài giảng (lưu tạm rồi encode)          |
+| Upload Thumbnail | Hình ảnh thumbnail khóa học                   |
+| Upload Document  | Tài liệu PDF/Slide cho bài giảng              |
+| Cloud Storage    | Lưu trữ trên Supabase Storage (S3-compatible) |
 
 <a name="yêu-cầu-phi-chức-năng"></a>
-## Yêu cầu phi chức năng
 
-Để nền tảng EDUMY vận hành ổn định trong môi trường thực tế, hệ thống phải tuân thủ nghiêm ngặt các tiêu chuẩn sau:
+## Yêu cầu phi chức năng
 
 ### Hiệu năng (Performance)
 
-| Tiêu chí | Mục tiêu | Ghi chú |
-|----------|----------|---------|
-| Thời gian phản hồi API thông thường | < 2 giây | Áp dụng cho đa số API (CRUD, tìm kiếm) |
-| Thời gian phản hồi API nộp bài | < 500ms | Yêu cầu tốc độ cao, đặc biệt trong thi cử |
-| Thời gian xử lý AI (tạo đề thi) | < 30 giây | Tác vụ bất đồng bộ, không gián đoạn UI |
+| Tiêu chí                            | Mục tiêu  | Ghi chú                                   |
+| ----------------------------------- | --------- | ----------------------------------------- |
+| Thời gian phản hồi API thông thường | < 2 giây  | Áp dụng cho đa số API (CRUD, tìm kiếm)    |
+| Thời gian phản hồi API nộp bài      | < 500ms   | Yêu cầu tốc độ cao, đặc biệt trong thi cử |
+| Thời gian xử lý AI (tạo đề thi)     | < 30 giây | Tác vụ bất đồng bộ, không gián đoạn UI    |
 
 ### Khả năng chịu tải (Scalability)
 
-| Tiêu chí | Mục tiêu |
-|----------|----------|
-| Người dùng đồng thời | Tối thiểu 1.000 người dùng |
-| Kiến trúc mở rộng | Horizontal Scaling — từng service scale độc lập |
-| Assessment Engine | Ưu tiên scale trước trong các kỳ thi tập trung |
+| Tiêu chí             | Mục tiêu                                        |
+| -------------------- | ----------------------------------------------- |
+| Người dùng đồng thời | Tối thiểu 1.000 người dùng                      |
+| Kiến trúc mở rộng    | Horizontal Scaling — từng service scale độc lập |
+| Assessment Engine    | Ưu tiên scale trước trong các kỳ thi tập trung  |
 
 ### Bảo mật (Security)
 
-| Biện pháp | Mô tả |
-|-----------|-------|
-| HTTPS (SSL/TLS) | Mã hóa toàn bộ giao tiếp Client-Server |
-| JWT Authentication | Token-based, có thời hạn, hỗ trợ Refresh Token |
-| Bcrypt Hash | Mật khẩu được băm trước khi lưu vào Database |
-| RBAC | Role-Based Access Control cho 3 vai trò |
-| Rate Limiting | Giới hạn request tại API Gateway chống DDoS/Brute-force |
-| Input Validation | Kiểm tra đầu vào ở cả Client và Server |
+| Biện pháp             | Mô tả                                                           |
+| --------------------- | --------------------------------------------------------------- |
+| HTTPS (TLS 1.2/1.3)   | Mã hóa toàn bộ giao tiếp qua Cloudflare Full Strict             |
+| JWT Authentication    | HMAC-SHA256, Access Token 15 phút, Refresh Token 7 ngày         |
+| ASP.NET Core Identity | Built-in password hashing, lockout, security stamp              |
+| RBAC                  | Role-Based Access Control cho 4 vai trò                         |
+| Rate Limiting         | Giới hạn request tại AuthenticationModule (fixed window)        |
+| Input Validation      | Kiểm tra đầu vào ở cả Client và Server                          |
+| Security Headers      | HSTS, X-Frame-Options, X-Content-Type-Options, X-XSS-Protection |
+| Docker Non-root       | Container chạy với user không phải root (appuser:appgroup)      |
+| Internal API Token    | X-Internal-Token header cho giao tiếp liên service              |
 
 ### Độ tin cậy (Reliability)
 
-| Tiêu chí | Mục tiêu |
-|----------|----------|
-| Uptime | Hướng tới 99.9% |
-| Tính nhất quán | ACID cho giao dịch thanh toán |
-| Sao lưu | Automated Backup định kỳ |
-| Phục hồi | Disaster Recovery Plan |
+| Tiêu chí       | Mục tiêu                              |
+| -------------- | ------------------------------------- |
+| Uptime         | Hướng tới 99.9%                       |
+| Tính nhất quán | ACID cho giao dịch thanh toán         |
+| Health Check   | Endpoint /health trên mỗi service     |
+| Auto Restart   | Docker restart policy: unless-stopped |
 
 ### Khả năng bảo trì (Maintainability)
 
-| Tiêu chí | Mô tả |
-|----------|-------|
-| Containerization | Docker cho toàn bộ service |
-| CI/CD | Sẵn sàng tích hợp pipeline tự động |
-| API Documentation | RESTful API chuẩn, dễ mở rộng |
-| Logging | Audit log tập trung, truy vết lỗi |
+| Tiêu chí          | Mô tả                                      |
+| ----------------- | ------------------------------------------ |
+| Containerization  | Docker multi-stage build, Alpine Linux     |
+| CI/CD             | GitHub Actions + GitOps deployment         |
+| API Documentation | Swagger/OpenAPI trên mỗi service           |
+| Logging           | Structured logging (JSON), contextual info |
+| Code Style        | EditorConfig đồng nhất Across modules      |
 
 ### Trải nghiệm người dùng (UX)
 
-| Tiêu chí | Mô tả |
-|----------|-------|
-| Responsive | Tối ưu cho Desktop, Tablet, Mobile |
-| Cross-browser | Hoạt động trên Chrome, Firefox, Safari, Edge |
-| Dark/Light Mode | Hỗ trợ giao diện tối/sáng |
-| Loading State | Hiệu ứng loading, skeleton screen |
+| Tiêu chí        | Mô tả                                        |
+| --------------- | -------------------------------------------- |
+| Responsive      | Tối ưu cho Desktop, Tablet, Mobile           |
+| Cross-browser   | Hoạt động trên Chrome, Firefox, Safari, Edge |
+| Dark/Light Mode | Hỗ trợ giao diện tối/sáng (Ant Design)       |
+| Loading State   | Lazy loading routes, Suspense fallback       |
+| i18n            | Hỗ trợ đa ngôn ngữ (Vietnamese, English)     |
 
 <a name="thiết-kế-cơ-sở-dữ-liệu"></a>
+
 ## Thiết kế cơ sở dữ liệu
 
-Chiến lược quản trị dữ liệu của hệ thống được phân tầng rõ ràng để vừa đảm bảo tốc độ truy xuất nhanh, vừa giữ tính toàn vẹn của dữ liệu giao dịch.
+### Cơ sở dữ liệu: PostgreSQL 16
 
-### Tầng 1: MySQL — Cơ sở dữ liệu quan hệ
+**Chiến lược**: Shared Database — tất cả 4 Microservice truy cập chung một database (`edumy-core-master`), mỗi service có ApplicationDbContext riêng với query filter隔离 dữ liệu.
 
-**Vai trò**: Lưu trữ vĩnh viễn dữ liệu có cấu trúc phức tạp.
+**ORM**: Entity Framework Core 8 với Npgsql provider.
 
-**Công nghệ**: MySQL 8 với Entity Framework Core (ORM) — tự động hóa ánh xạ mã nguồn vào bảng dữ liệu.
+**Các nhóm thực thể chính**:
 
-**Dữ liệu lưu trữ**:
-- Hồ sơ người dùng (User, Role, Profile)
-- Cấu trúc khóa học (Course, Section, Lesson)
-- Ngân hàng câu hỏi (QuestionBank, Question, Answer)
-- Bài kiểm tra (Quiz, QuizAttempt, QuizResult)
-- Giao dịch thanh toán (Order, Transaction, Withdrawal)
-- Danh mục hệ thống (Category, Tag)
+#### Thực thể lõi (Core Entities)
 
-### Tầng 2: Redis — Bộ nhớ đệm In-Memory
+| Entity                   | Mô tả                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------- |
+| ApplicationUser          | Mở rộng IdentityUser: FullName, AvatarUrl, DOB, Gender, Address, ProvinceId, GoogleId |
+| Course                   | Title, Description, ThumbnailUrl, Price, PromotionPrice, CreatorId, CourseTypeId      |
+| CourseSection            | CourseId, Title, Order                                                                |
+| Lesson                   | SectionId, Title, Type, Order, BusinessStatus                                         |
+| Exam                     | CourseId, LessonId, Title, ExamCategoryId                                             |
+| Question                 | Title, SubjectCategoryId                                                              |
+| QuestionOption           | QuestionId, Content, IsCorrect                                                        |
+| Enrollment               | UserId, CourseId, PaymentOrderId, Status                                              |
+| ExamEnrollment           | UserId, ExamId, PaymentOrderId, Status                                                |
+| PaymentOrder             | UserId, Code, SubTotal, DiscountAmount, TotalAmount, VoucherId, OrderStatus, QrUrl    |
+| PaymentTransaction       | PaymentOrderId, BankName, AccountNumber, Amount, TransactionDate                      |
+| Voucher                  | Code, DiscountType, DiscountValue, StartDate, EndDate, MaxUsage                       |
+| Resource                 | LessonId, Title, Url, DocumentTypeId                                                  |
+| Video                    | LessonId, Title, OriginalFileName, VideoStatus                                        |
+| Notification             | NotificationType, Content                                                             |
+| UserNotification         | UserId, NotificationId, IsRead                                                        |
+| UserActionToken          | UserId, TokenHash, Type, ExpiresAt                                                    |
+| Article                  | Content management                                                                    |
+| Conversation/ChatMessage | Messaging system                                                                      |
 
-**Vai trò**: Lưu trữ tạm thời trên RAM để giảm tải áp lực đọc ghi cho MySQL, cung cấp thời gian phản hồi gần như tức thời.
+#### Danh mục (Catalog Entities - CAT\_\* prefix)
 
-**Dữ liệu lưu trữ**:
-- Danh mục hệ thống tĩnh (categories, tags)
-- Trạng thái bài thi đang làm dở (draft answers, timer)
-- Session và Token blacklist
-- Rate Limiting counters
-- Cache truy vấn thường xuyên
+| Entity                               | Mô tả                  |
+| ------------------------------------ | ---------------------- |
+| CAT_Province                         | Tỉnh/Thành phố         |
+| CAT_CourseCategory                   | Danh mục khóa học      |
+| CAT_CourseType                       | Loại khóa học          |
+| CAT_SubjectCategory                  | Danh mục môn học       |
+| CAT_ExamCategory                     | Danh mục bài thi       |
+| CAT_DocumentCategory                 | Danh mục tài liệu      |
+| CAT_DocumentType                     | Loại tài liệu          |
+| CAT_Tag                              | Thẻ gắn                |
+| CAT_Level                            | Cấp độ                 |
+| CAT_Occupation                       | Nghề nghiệp            |
+| CAT_GradingRule                      | Quy tắc chấm điểm      |
+| CAT_VoucherType                      | Loại voucher           |
+| CAT_InstructorApplicationRequirement | Yêu cầu đơn giảng viên |
+| CAT_NotificationType                 | Loại thông báo         |
 
-### Tầng 3: Cloud Storage
+#### Base Entity Pattern
 
-**Vai trò**: Lưu trữ tệp tin đa phương tiện dung lượng lớn.
+Tất cả catalog entities kế thừa `BaseEntity`:
 
-**Dữ liệu lưu trữ**:
-- Video bài giảng (MP4)
-- Tài liệu PDF, Slide
-- Hình ảnh, thumbnail khóa học
+- `Id` (auto-increment int)
+- `Code`, `Name`, `Description`
+- `IsDefault`, `SortOrder`
+- `CreatedAt`, `CreatedBy`, `UpdatedAt`
+- `Status` (GeneralStatus enum: Deleted=-1, InActive=0, Active=1)
 
-**Cơ chế**: MySQL chỉ lưu URL trỏ đến tệp tin trên Cloud Storage, giúp tiết kiệm không gian máy chủ nội bộ.
+**Soft Delete**: Tất cả entities sử dụng `GeneralStatus` enum với query filter để soft delete thay vì hard delete.
 
-<a name="công-nghệ-sử-dụng"></a>
-## Công nghệ sử dụng
+**Auto Timestamp**: `ApplicationDbContext.SaveChangesAsync()` tự động cập nhật `CreatedAt` và `UpdatedAt`.
 
-Ngăn xếp công nghệ (Tech Stack) được lựa chọn dựa trên tiêu chí: hiệu năng cao, tốc độ phát triển nhanh, tính ổn định cho môi trường giáo dục quy mô lớn.
+<a name="ngăn-xếp-công-nghệ-tech-stack"></a>
 
-<a name="tầng-xử-lý-backend-với-net-core"></a>
-### Tầng xử lý Backend với .NET Core
+## Ngăn xếp công nghệ (Tech Stack)
 
-| Công nghệ | Phiên bản | Mục đích |
-|-----------|-----------|----------|
-| .NET | 8 | Nền tảng Backend Microservices |
-| C# | 12 | Ngôn ngữ lập trình |
-| Entity Framework Core | 8 | ORM, tự động ánh xạ Database |
-| ASP.NET Core Web API | 8 | Xây dựng RESTful API |
-| System.IdentityModel.Tokens.Jwt | — | Xử lý JWT Authentication |
-| BCrypt.Net | — | Băm mật khẩu |
-| Docker | 24+ | Containerization |
+### Tổng quan
+
+| Thành phần         | Công nghệ                                 |
+| ------------------ | ----------------------------------------- |
+| Backend Framework  | .NET 8 (ASP.NET Core Web API)             |
+| Ngôn ngữ Backend   | C# 12                                     |
+| ORM                | Entity Framework Core 8 (Npgsql)          |
+| DI Container       | Autofac                                   |
+| Object Mapping     | AutoMapper                                |
+| Database           | PostgreSQL 16                             |
+| Frontend Web       | React 19 + Vite 8 + TypeScript 6          |
+| UI Library         | Ant Design 6 + Tailwind CSS 4             |
+| Mobile             | Flutter (Dart 3.10)                       |
+| API Gateway        | Nginx 1.27-alpine                         |
+| Containerization   | Docker (multi-stage, Alpine Linux)        |
+| CDN / TLS          | Cloudflare (Full Strict SSL)              |
+| Authentication     | JWT (HMAC-SHA256) + ASP.NET Core Identity |
+| OAuth              | Google OAuth 2.0                          |
+| Payment Gateway    | VietQR via SePay                          |
+| Object Storage     | Supabase Storage (S3-compatible)          |
+| Real-time          | SignalR (WebSocket)                       |
+| Localization       | ASP.NET Core IStringLocalizer + i18next   |
+| Email              | SMTP (Gmail, async via job queue)         |
+| CI/CD              | GitHub Actions + GitOps                   |
+| Container Registry | GitHub Container Registry (GHCR)          |
+| License            | GNU GPLv3                                 |
+
+### Backend (.NET 8)
+
+| Công nghệ                       | Mục đích                          |
+| ------------------------------- | --------------------------------- |
+| .NET 8                          | Nền tảng Backend Microservices    |
+| ASP.NET Core Web API            | Xây dựng RESTful API              |
+| Entity Framework Core 8         | ORM, tự động ánh xạ Database      |
+| Autofac                         | Dependency Injection Container    |
+| AutoMapper                      | Object-to-Object Mapping          |
+| ASP.NET Core Identity           | User management, password hashing |
+| System.IdentityModel.Tokens.Jwt | Xử lý JWT Authentication          |
+| Swashbuckle                     | Swagger/OpenAPI documentation     |
+| Supabase.Storage                | File/Object Storage client        |
+| FluentEmail (SMTP)              | Email sending                     |
+| SignalR                         | Real-time communication           |
 
 **Lý do chọn .NET 8**:
+
 - Hiệu năng xử lý luồng dữ liệu vượt trội nhờ Garbage Collection tiên tiến
 - Ngôn ngữ C# mang tính chặt chẽ về kiểu dữ liệu, mô hình OOP hoàn chỉnh
 - Khả năng xử lý đa luồng (Concurrency) giúp tiếp nhận hàng ngàn lượt nộp bài cùng lúc
 - Hệ sinh thái thư viện phong phú, hỗ trợ mạnh từ Microsoft
 
-<a name="tầng-giao-diện-frontend-nền-tảng-web-với-react-vite"></a>
-### Tầng giao diện Frontend nền tảng Web với React Vite
+### Frontend Web (React 19 + Vite 8)
 
-| Công nghệ | Phiên bản | Mục đích |
-|-----------|-----------|----------|
-| React | 18 | Thư viện xây dựng giao diện SPA |
-| Vite | 5 | Công cụ biên dịch, HMR |
-| TypeScript | 5 | Kiểu dữ liệu tĩnh |
-| React Router | 6 | Điều hướng SPA |
-| Axios | — | HTTP Client |
-| Chart.js / Recharts | — | Biểu đồ Dashboard |
+| Công nghệ             | Phiên bản | Mục đích                        |
+| --------------------- | --------- | ------------------------------- |
+| React                 | 19        | Thư viện xây dựng giao diện SPA |
+| Vite                  | 8         | Công cụ biên dịch, HMR          |
+| TypeScript            | 6         | Kiểu dữ liệu tĩnh               |
+| React Router          | 7         | Điều hướng SPA                  |
+| Ant Design            | 6         | UI Component Library            |
+| Tailwind CSS          | 4         | Utility-first CSS               |
+| Axios                 | 1.18      | HTTP Client                     |
+| TanStack React Query  | 5         | Server state management         |
+| Zustand               | 5         | Client state management         |
+| React Hook Form + Zod | 7 + 4     | Form handling & validation      |
+| i18next               | 26        | Internacionalização             |
+
+**Architecture**: Feature-Sliced Design (FSD) với các tầng: `app` → `pages` → `widgets` → `features` → `entities` → `shared`.
 
 **Lý do chọn React + Vite**:
-- Kiến trúc SPA (Single Page Application) giúp giao diện phản hồi nhanh, không tải lại trang
-- Vite mang lại tốc độ biên dịch cực nhanh và Hot Module Replacement
-- Tối ưu hóa hiệu suất làm việc với các trang quản trị chứa biểu đồ phức tạp
 
-<a name="tầng-giao-diện-frontend-nền-tảng-mobile-với-flutter"></a>
-### Tầng giao diện Frontend nền tảng Mobile với Flutter
+- Kiến trúc SPA giúp giao diện phản hồi nhanh, không tải lại trang
+- Vite 8 mang lại tốc độ biên dịch cực nhanh và Hot Module Replacement
+- TypeScript giúp phát hiện lỗi sớm, codebase dễ bảo trì
+- Feature-Sliced Design tạo cấu trúc code rõ ràng, scalable
 
-| Công nghệ | Phiên bản | Mục đích |
-|-----------|-----------|----------|
-| Flutter | 3 | Framework Mobile đa nền tảng |
-| Dart | 3 | Ngôn ngữ lập trình |
-| Provider / Riverpod | — | Quản lý trạng thái |
-| video_player | — | Phát video bài giảng |
-| http / dio | — | HTTP Client |
+### Mobile (Flutter)
+
+| Công nghệ            | Phiên bản | Mục đích                     |
+| -------------------- | --------- | ---------------------------- |
+| Flutter              | 3.x       | Framework Mobile đa nền tảng |
+| Dart                 | 3.10      | Ngôn ngữ lập trình           |
+| Provider             | 6         | Quản lý trạng thái           |
+| Hive                 | 2         | Local storage                |
+| flutter_svg          | 2         | Hiển thị SVG                 |
+| cached_network_image | 3         | Cache hình ảnh               |
+| Lottie               | 3         | Hiệu ứng animation           |
 
 **Lý do chọn Flutter**:
+
 - Biên dịch trực tiếp thành ứng dụng Native cho cả iOS và Android
-- Công cụ kết xuất đồ họa độc lập (Skia), hiển thị sắc nét trên mọi thiết bị
-- Quản lý trạng thái cục bộ tuyệt vời, xử lý trơn tru video và bài kiểm tra
+- Công cụ kết xuất đồ họa độc lập, hiển thị sắc nét trên mọi thiết bị
 - Hot Reload giúp tăng tốc phát triển
 
-### Tóm tắt Tech Stack
+<a name="cấu-hình--triển-khai"></a>
 
-| Thành phần | Công nghệ |
-|------------|-----------|
-| Backend Framework | .NET 8 (ASP.NET Core Web API) |
-| Ngôn ngữ Backend | C# 12 |
-| ORM | Entity Framework Core 8 |
-| Frontend Web | React 18 + Vite + TypeScript |
-| Mobile | Flutter 3 + Dart |
-| Database | MySQL 8 |
-| Cache | Redis 7 |
-| API Gateway | Nginx 1.26 |
-| Container | Docker 24+ |
-| Authentication | JWT + Bcrypt |
-| Payment Gateway | VNPAY QR Code |
-| AI | RAG (Retrieval-Augmented Generation), NLP |
-| Storage | Cloud Storage |
+## Cấu hình & Triển khai
+
+### Môi trường Production
+
+| Thành phần | Giá trị                       |
+| ---------- | ----------------------------- |
+| Domain     | `production.nhathungdev.site` |
+| VPS        | Debian (Google Cloud)         |
+| IP         | 35.190.177.59                 |
+| TLS        | Cloudflare Origin Certificate |
+| SSL Mode   | Full (Strict)                 |
+
+### Docker Compose Services (7 services)
+
+| Service                 | Image                                              | Port     |
+| ----------------------- | -------------------------------------------------- | -------- |
+| `nginx-proxy`           | `nginx:1.27-alpine`                                | 80, 443  |
+| `edumy-ui-web`          | `ghcr.io/edumyvietnam/edumy-frontend:v1.0.0`       | 80\*     |
+| `authentication-module` | `ghcr.io/edumyvietnam/edumy-authentication:v4.1.2` | 5083\*   |
+| `course-module`         | `ghcr.io/edumyvietnam/edumy-course:v4.1.0`         | 5164\*   |
+| `payment-module`        | `ghcr.io/edumyvietnam/edumy-payment:v3.0.1`        | 5299\*   |
+| `system-module`         | `ghcr.io/edumyvietnam/edumy-system:v3.2.0`         | 5243\*   |
+| `postgresdb`            | `postgres:16`                                      | 5432\*\* |
+
+\* Port nội bộ, không publicly exposed
+\*\* Bound to `127.0.0.1:5432` only
+
+### Traffic Flow
+
+```
+Client → Cloudflare (Full Strict TLS) → Nginx (:443 HTTPS)
+                                            │
+                                    ┌───────┴───────┐
+                                    │               │
+                             Backend Modules    Frontend (:80)
+                                    │
+                             PostgreSQL (internal, localhost:5432)
+```
+
+### Nginx Configuration
+
+- **TLS**: TLS 1.2/1.3 only, ECDHE ciphers
+- **Security Headers**: HSTS (`max-age=31536000; includeSubDomains; preload`), X-Frame-Options SAMEORIGIN, X-Content-Type-Options nosniff, X-XSS-Protection
+- **Upload Limit**: `client_max_body_size 100M`
+- **Cloudflare Real IP**: `set_real_ip_from` cho tất cả Cloudflare IP ranges
+- **SPA Fallback**: `try_files $uri $uri/ /index.html`
+- **Static Asset Caching**: 1 year cho assets có hash
+
+### Environment Variables (`.env`)
+
+| Variable                            | Mô tả                        |
+| ----------------------------------- | ---------------------------- |
+| `POSTGRES_PASSWORD`                 | Mật khẩu PostgreSQL          |
+| `ConnectionStrings__DbConnection`   | Connection string database   |
+| `Jwt__SecretKey`                    | Khóa bí mật JWT              |
+| `Jwt__Issuer` / `Jwt__Audience`     | JWT issuer/audience          |
+| `GoogleOAuth__Web__ClientId`        | Google OAuth Client ID       |
+| `GoogleOAuth__Web__ClientSecret`    | Google OAuth Client Secret   |
+| `Smtp__Username` / `Smtp__Password` | SMTP credentials (Gmail)     |
+| `Supabase__Key`                     | Supabase API Key             |
+| `InternalApi__Token`                | Token giao tiếp liên service |
+
+<a name="devops--cicd"></a>
+
+## DevOps & CI/CD
+
+### Cấu trúc CI/CD
+
+Mỗi Microservice và Frontend đều có CI/CD pipeline riêng thông qua GitHub Actions:
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    CI/CD Pipeline Flow                        │
+│                                                               │
+│  Code Push → CI Build → Release → Docker Build → GitOps      │
+│                                      │                        │
+│                                      ▼                        │
+│                              Push to GHCR                     │
+│                                      │                        │
+│                                      ▼                        │
+│                        Repository Dispatch to Infra           │
+│                                      │                        │
+│                                      ▼                        │
+│                          SSH → VPS → Docker Compose Up        │
+│                                      │                        │
+│                                      ▼                        │
+│                          Telegram Notification                │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### CI Pipeline (`ci.yaml`)
+
+**Trigger**: Push/PR to `main`
+
+**Steps**:
+
+1. Checkout code
+2. Setup .NET 8.0
+3. Restore NuGet packages (with caching)
+4. Build (Release configuration)
+5. Format check (`dotnet format --verify-no-changes`)
+6. Publish & upload artifacts
+
+### Docker Build Pipeline (`docker-build.yml`)
+
+**Trigger**: On release
+
+**Steps**:
+
+1. Multi-platform Docker build (amd64 + arm64)
+2. Push to GitHub Container Registry (GHCR)
+3. GitOps: Update image tag in `Infra-cicd` repository
+4. Trigger deployment via `repository_dispatch`
+
+### CD Pipeline (`cd.yml`) — Infra Repository
+
+**Trigger**: Push to `main`
+
+**Steps**:
+
+1. Detect changed service (via git diff + commit message regex)
+2. SSH into VPS
+3. `git fetch && git reset --hard origin/main`
+4. Sync image tags from `.env.example` to `.env`
+5. `docker compose pull --ignore-pull-failures`
+6. `docker compose up -d --remove-orphans`
+7. `docker image prune -f --filter "until=48h"`
+8. Send Telegram notification on success
+
+### Notification
+
+- **Telegram Bot**: Thông báo deploy thành công qua HTML-formatted message
+- **Release-Please**: Automated versioning và release notes
+
+<a name="tình-trạng-hiện-tại-dự-án"></a>
+
+## Tình trạng hiện tại dự án
+
+> Cập nhật: Tháng 09/2026
+
+### Tổng quan tiến độ
+
+| Layer               | Trạng thái               | Ghi chú                                      |
+| ------------------- | ------------------------ | -------------------------------------------- |
+| **Backend**         | **Hoạt động**            | 4 microservices đã deploy production         |
+| **Frontend Web**    | **Scaffold**             | Kiến trúc FSD hoàn thiện, UI chưa implement  |
+| **Frontend Mobile** | **Scaffold**             | Chỉ có localization scaffolding              |
+| **Design**          | **Hoàn thiện 31 screen** | Wireframe HTML cho tất cả chức năng chính    |
+| **Infra**           | **Hoạt động**            | Docker Compose trên VPS, CD pipeline tự động |
+
+### Backend — Chi tiết
+
+| Module                 | Version | Trạng thái | Ghi chú                                  |
+| ---------------------- | ------- | ---------- | ---------------------------------------- |
+| AuthenticationModule   | v4.1.2  | Production | JWT, RBAC, Google OAuth, Rate Limiting   |
+| CourseManagementModule | v4.1.0  | Production | CRUD khóa học, Section/Lesson, Upload    |
+| PaymentModule          | v3.0.1  | Production | VietQR/SePay, PaymentOrder               |
+| SystemManagementModule | v3.2.0  | Production | Profile, Catalogs, SignalR Notifications |
+
+**Điểm mạnh**:
+
+- Kiến trúc layered rõ ràng (API → Service → Repository → DbContext)
+- Generic Repository + Generic Service pattern
+- Autofac DI container
+- Auto timestamp (CreatedAt/UpdatedAt) trong SaveChangesAsync
+- Soft delete với GeneralStatus enum
+- XML documentation trên tất cả controller actions
+- EditorConfig đồng nhất code style
+- Swagger/OpenAPI documentation
+- Structured logging
+- Health check endpoints
+
+**Vấn đề cần xử lý**:
+
+- Không có unit test hoặc integration test
+- CORS开放 (`AllowAnyOrigin`) — cần restrict cho production domains
+- `NotFoundException` handler chưa implement (throw `NotImplementedException`)
+- Some blocking calls (`.Result`) trong async methods — có thể gây thread pool starvation
+- Trivy vulnerability scanner bị tắt trong CI/CD
+- Duplicate code giữa các module (entities giống nhau)
+- Tên method có typo (`RefrestToken`, `Pagingnation`)
+
+### Frontend Web — Chi tiết
+
+**EWebsite (React 19)**:
+
+| Thành phần       | Trạng thái | Ghi chú                                    |
+| ---------------- | ---------- | ------------------------------------------ |
+| Kiến trúc FSD    | Hoàn thiện | app/pages/widgets/features/entities/shared |
+| Routing          | Hoàn thiện | Lazy loading, Suspense fallback            |
+| Providers        | Hoàn thiện | QueryProvider + ThemeProvider              |
+| Axios Client     | Hoàn thiện | baseURL, timeout, headers configured       |
+| Pages            | Scaffold   | HomePage ("Application Initialized"), 404  |
+| Widgets          | Scaffold   | Header, Sidebar, PageHeader — placeholder  |
+| Features         | Scaffold   | Auth, Courses, Theme — placeholder         |
+| Entities         | Scaffold   | Branch, Category, Course, Department, User |
+| Shared UI        | Scaffold   | Button, Input, Spinner, ErrorFallback      |
+| State Management | Scaffold   | Zustand installed, no stores implemented   |
+| i18n             | Scaffold   | i18next installed, no config/translations  |
+| Forms            | Scaffold   | react-hook-form + zod installed, no usage  |
+| Tests            | Không có   | Không test framework, không test files     |
+
+**Emobile (Flutter)**:
+
+| Thành phần   | Trạng thái | Ghi chú                        |
+| ------------ | ---------- | ------------------------------ |
+| Localization | Hoàn thiện | Vietnamese + English ARB files |
+| Main App     | Scaffold   | MaterialApp + "Hello World!"   |
+| Screens      | Không có   | Chưa implement screen nào      |
+| Tests        | Không có   | Không test files               |
+
+### Design — Chi tiết
+
+| Khu vực      | Số screen | Trạng thái    |
+| ------------ | --------- | ------------- |
+| Home         | 1         | Hoàn thiện    |
+| Auth         | 6         | Hoàn thiện    |
+| User Profile | 4         | Hoàn thiện    |
+| Course       | 5         | Hoàn thiện    |
+| Cart         | 2         | Hoàn thiện    |
+| Exam         | 6         | Hoàn thiện    |
+| Instructor   | 7         | Hoàn thiện    |
+| Admin        | 0         | Chưa thiết kế |
+| **Tổng**     | **31**    |               |
+
+**Design System**:
+
+- **Colors**: Primary (#2558E5), Secondary (#FF6B4A), Neutral, Success, Warning, Error, Info
+- **Typography**: Inter font, weights 400-800, scale H1=56px → H6=20px
+- **Components**: 4 button types (Primary, Secondary, Outline, Icon) × 4 states
+- **Layouts**: Navbar, Footer, Admin Layout, Instructor Layout
+- **Icons**: 442 SVG icons trong 14 categories
+
+### Infrastructure — Chi tiết
+
+| Thành phần          | Trạng thái     | Ghi chú                               |
+| ------------------- | -------------- | ------------------------------------- |
+| Docker Compose      | Hoạt động      | 7 services, single VPS                |
+| Nginx               | Hoạt động      | TLS, Security Headers, SPA Fallback   |
+| PostgreSQL          | Hoạt động      | Port 5432 (internal only)             |
+| Cloudflare          | Hoạt động      | Full Strict TLS, CDN, DDoS protection |
+| CI/CD               | Hoạt động      | GitHub Actions + GitOps               |
+| Telegram Notify     | Hoạt động      | Deploy success notifications          |
+| Monitoring          | Không có       | Không có monitoring/logging stack     |
+| Database Backup     | Manual         | Chưa có automated backup              |
+| Container Resources | Không có limit | Không set mem_limit/cpus              |
 
 <a name="kế-hoạch-thực-hiện"></a>
+
 ## Kế hoạch thực hiện
 
 Quá trình xây dựng nền tảng EDUMY được chia thành 5 giai đoạn, kéo dài 5 tháng (07/2026 – 11/2026).
 
-### Giai đoạn 1: Thiết lập nền tảng (Tháng 7, 2026)
+### Giai đoạn 1: Thiết lập nền tảng (Tháng 7, 2026) — HOÀN THÀNH
 
-| Công việc | Mô tả |
-|-----------|-------|
-| Thiết lập Repository | Git, branching strategy (Git Flow) |
-| Thiết lập Docker | Docker Compose cho môi trường Dev |
-| Cấu hình CI/CD | GitHub Actions, tự động build/test |
-| Thiết kế Database | ERD, migration scripts, seeding data |
-| Thiết lập Nginx | Cấu hình API Gateway, SSL |
-| Tài liệu API | Swagger/OpenAPI cho các endpoint |
+| Công việc            | Trạng thái    |
+| -------------------- | ------------- |
+| Thiết lập Repository | ✅ Hoàn thành |
+| Docker Compose Dev   | ✅ Hoàn thành |
+| CI/CD Pipeline       | ✅ Hoàn thành |
+| Database Design      | ✅ Hoàn thành |
+| Nginx Config         | ✅ Hoàn thành |
+| API Documentation    | ✅ Hoàn thành |
+| Wireframe Design     | ✅ 31 screens |
 
-### Giai đoạn 2: Authentication & System Management (Tháng 8, 2026)
+### Giai đoạn 2: Authentication & System Management (Tháng 8, 2026) — HOÀN THÀNH
 
-| Module | Công việc |
-|--------|-----------|
-| Auth | Đăng ký/đăng nhập, JWT, OTP, SSO, RBAC |
-| Auth | Refresh Token, Quên mật khẩu, Đăng xuất |
-| System | Quản lý người dùng (CRUD), khóa/mở khóa |
-| System | Workflow phê duyệt giảng viên |
-| System | Admin Dashboard (biểu đồ cơ bản) |
-| System | CRUD danh mục, nhật ký hoạt động |
+| Module | Công việc                          | Trạng thái    |
+| ------ | ---------------------------------- | ------------- |
+| Auth   | Đăng ký/đăng nhập, JWT, RBAC       | ✅ Hoàn thành |
+| Auth   | Refresh Token, Quên MK, Đăng xuất  | ✅ Hoàn thành |
+| Auth   | Google OAuth 2.0                   | ✅ Hoàn thành |
+| Auth   | Rate Limiting                      | ✅ Hoàn thành |
+| System | Quản lý người dùng (CRUD)          | ✅ Hoàn thành |
+| System | CRUD danh mục (14 catalog tables)  | ✅ Hoàn thành |
+| System | SignalR Notifications              | ✅ Hoàn thành |
+| System | Profile Management + Avatar Upload | ✅ Hoàn thành |
 
-### Giai đoạn 3: Course Management & Assessment (Tháng 9, 2026)
+### Giai đoạn 3: Course Management & Assessment (Tháng 9, 2026) — ĐANG THỰC HIỆN
 
-| Module | Công việc |
-|--------|-----------|
-| Course | CRUD khóa học, quản lý vòng đời |
-| Course | Cấu trúc Section → Lesson |
-| Course | Upload video/PDF/Slide, Cloud Storage |
-| Assessment | Ngân hàng câu hỏi (4 định dạng) |
-| Assessment | Import/Export câu hỏi |
-| Assessment | Tạo đề thi, cấu hình tham số |
-| Assessment | Bộ đếm thời gian thực, tự động lưu nháp |
-| Assessment | Chấm điểm tự động + thủ công |
-| Assessment | Thống kê và báo cáo kết quả |
+| Module     | Công việc                       | Trạng thái         |
+| ---------- | ------------------------------- | ------------------ |
+| Course     | CRUD khóa học, vòng đời         | ✅ Hoàn thành      |
+| Course     | Cấu trúc Section → Lesson       | ✅ Hoàn thành      |
+| Course     | Upload Video/Document/Thumbnail | ✅ Hoàn thành      |
+| Assessment | Ngân hàng câu hỏi (4 định dạng) | ✅ Hoàn thành      |
+| Assessment | Tạo đề thi, ExamAttempt         | ✅ Hoàn thành      |
+| Assessment | Chấm điểm tự động + thủ công    | ⏳ Đang phát triển |
+| Assessment | Thống kê kết quả                | ⏳ Đang phát triển |
+| Frontend   | Implement UI từ wireframe       | 🔜 Sắp tới         |
 
 ### Giai đoạn 4: Payment, AI & Frontend (Tháng 10, 2026)
 
-| Module | Công việc |
-|--------|-----------|
-| Payment | Tích hợp VNPAY QR Code |
-| Payment | Xử lý Webhook/IPN, quản lý giao dịch |
-| Payment | Đối soát doanh thu, rút tiền |
-| AI | Xây dựng Chatbot RAG |
-| AI | Tự động sinh đề thi từ tài liệu |
-| AI | Xử lý bất đồng bộ (Message Queue) |
-| Frontend | React: trang Admin, Instructor Dashboard |
-| Frontend | React: quản lý khóa học, ngân hàng câu hỏi |
-| Frontend | React: biểu đồ thống kê, form phức tạp |
-| Mobile | Flutter: đăng nhập, danh sách khóa học |
-| Mobile | Flutter: xem video, làm bài kiểm tra |
-| Mobile | Flutter: Chatbot AI, theo dõi tiến độ |
+| Module   | Công việc                            | Trạng thái    |
+| -------- | ------------------------------------ | ------------- |
+| Payment  | VietQR/SePay integration             | ✅ Hoàn thành |
+| Payment  | PaymentOrder, Transaction management | ✅ Hoàn thành |
+| Payment  | Voucher system                       | ✅ Hoàn thành |
+| AI       | Chatbot RAG                          | 🔜 Sắp tới    |
+| AI       | Auto-generate Exam from documents    | 🔜 Sắp tới    |
+| Frontend | Admin Dashboard UI                   | 🔜 Sắp tới    |
+| Frontend | Instructor Course Builder UI         | 🔜 Sắp tới    |
+| Frontend | Student Learning UI                  | 🔜 Sắp tới    |
+| Mobile   | Flutter: Login, Course List          | 🔜 Sắp tới    |
+| Mobile   | Flutter: Video, Exam                 | 🔜 Sắp tới    |
 
 ### Giai đoạn 5: Kiểm thử & Triển khai (Tháng 11, 2026)
 
-| Công việc | Mô tả |
-|-----------|-------|
-| Unit Test | Kiểm thử từng module riêng lẻ |
-| Integration Test | Kiểm thử luồng liên module |
-| Load Test | Đánh giá hiệu năng với 1000+ người dùng đồng thời |
-| Security Test | Kiểm tra bảo mật, xác thực, phân quyền |
-| Bug Fix | Sửa lỗi, tối ưu hiệu năng |
-| Triển khai Production | Deploy lên server thực tế |
-| Tài liệu hướng dẫn | Hướng dẫn sử dụng cho Admin, Instructor, Student |
-| Viết báo cáo | Hoàn thiện luận văn tốt nghiệp |
-| Chuẩn bị bảo vệ | Slide, demo, Q&A |
+| Công việc             | Mô tả                                             |
+| --------------------- | ------------------------------------------------- |
+| Unit Test             | Kiểm thử từng module riêng lẻ                     |
+| Integration Test      | Kiểm thử luồng liên module                        |
+| Load Test             | Đánh giá hiệu năng với 1000+ người dùng đồng thời |
+| Security Test         | Kiểm tra bảo mật, xác thực, phân quyền            |
+| Bug Fix               | Sửa lỗi, tối ưu hiệu năng                         |
+| Triển khai Production | Deploy lên server thực tế                         |
+| Tài liệu hướng dẫn    | Hướng dẫn sử dụng cho Admin, Instructor, Student  |
+| Viết báo cáo          | Hoàn thiện luận văn tốt nghiệp                    |
+| Chuẩn bị bảo vệ       | Slide, demo, Q&A                                  |
 
 <a name="liên-hệ"></a>
+
 ## Liên hệ
 
 Mọi thắc mắc, góp ý về đề tài EDUMY, xin vui lòng liên hệ:
 
-| Kênh | Thông tin |
-|------|-----------|
-| **Email** | quangnhathung2005@gmail.com |
-| **Điện thoại** | 0838557433 |
-| **Địa chỉ** | 77 Bùi Xuân Phái, Phường Phú Mỹ Hưng, Quận 7, TP.HCM |
-| **Website** | [edumy.nhathungdev.site](https://edumy.nhathungdev.site) |
-| **Giờ làm việc** | Thứ 2 – Thứ 6: 8:00 – 18:00, Thứ 7: 8:00 – 12:00 |
+| Kênh             | Thông tin                                                |
+| ---------------- | -------------------------------------------------------- |
+| **Email**        | quangnhathung2005@gmail.com                              |
+| **Điện thoại**   | 0838557433                                               |
+| **Địa chỉ**      | 77 Bùi Xuân Phái, Phường Phú Mỹ Hưng, Quận 7, TP.HCM     |
+| **Website**      | [edumy.nhathungdev.site](https://edumy.nhathungdev.site) |
+| **GitHub**       | [EdumyVietNam](https://github.com/EdumyVietNam)          |
+| **Giờ làm việc** | Thứ 2 – Thứ 6: 8:00 – 18:00, Thứ 7: 8:00 – 12:00         |
 
 ---
 
@@ -741,4 +1121,4 @@ Mọi thắc mắc, góp ý về đề tài EDUMY, xin vui lòng liên hệ:
 
 **Đề tài khóa luận tốt nghiệp** — Khoa Công nghệ Thông tin, Trường Đại học Công Thương Thành phố Hồ Chí Minh (HUIT)
 
-*Made by Quang Nhat Hung*
+_Made by Quang Nhat Hung_
