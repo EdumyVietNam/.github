@@ -31,8 +31,6 @@
 
 ## Giới thiệu
 
-**EDUMY** là đề tài khóa luận tốt nghiệp của nhóm sinh viên Khoa Công nghệ Thông tin, Trường Đại học Công Thương Thành phố Hồ Chí Minh (HUIT), với mục tiêu **xây dựng nền tảng E-learning tích hợp quản lý khóa học và đánh giá trực tuyến**.
-
 Trong bối cảnh nền giáo dục toàn cầu đang trải qua giai đoạn chuyển đổi số mạnh mẽ, các hệ thống E-learning dần khẳng định vai trò là xương sống của hạ tầng công nghệ giáo dục. Tuy nhiên, các hệ thống hiện tại thường bị phân mảnh, tách biệt rõ ràng giữa hệ thống quản lý nội dung học tập và nền tảng tổ chức thi cử độc lập, gây ra sự đứt gãy trong quá trình luân chuyển dữ liệu.
 
 EDUMY ra đời nhằm giải quyết bài toán đó bằng kiến trúc **Microservices** hiện đại, kết hợp trải nghiệm Front-end mượt mà với sự khắt khe trong đánh giá năng lực học thuật, mang lại một giải pháp toàn diện cho các cơ sở giáo dục quy mô vừa và nhỏ.
@@ -52,6 +50,7 @@ EDUMY ra đời nhằm giải quyết bài toán đó bằng kiến trúc **Micr
 | **Đơn vị**               | Khoa Công nghệ Thông tin — Trường Đại học Công Thương TP.HCM (HUIT)           |
 | **Thời gian thực hiện**  | Tháng 07/2026 – Tháng 11/2026 (5 tháng)                                       |
 | **Trang web giới thiệu** | [edumy.nhathungdev.site](https://edumy.nhathungdev.site)                      |
+| **Production** | [production.nhathungdev.site](https://production.nhathungdev.site)                      |
 
 <a name="bối-cảnh--động-lực"></a>
 
@@ -1025,81 +1024,9 @@ Mỗi Microservice và Frontend đều có CI/CD pipeline riêng thông qua GitH
 | Database Backup     | Manual         | Chưa có automated backup              |
 | Container Resources | Không có limit | Không set mem_limit/cpus              |
 
-<a name="kế-hoạch-thực-hiện"></a>
 
-## Kế hoạch thực hiện
-
-Quá trình xây dựng nền tảng EDUMY được chia thành 5 giai đoạn, kéo dài 5 tháng (07/2026 – 11/2026).
-
-### Giai đoạn 1: Thiết lập nền tảng (Tháng 7, 2026) — HOÀN THÀNH
-
-| Công việc            | Trạng thái    |
-| -------------------- | ------------- |
-| Thiết lập Repository | ✅ Hoàn thành |
-| Docker Compose Dev   | ✅ Hoàn thành |
-| CI/CD Pipeline       | ✅ Hoàn thành |
-| Database Design      | ✅ Hoàn thành |
-| Nginx Config         | ✅ Hoàn thành |
-| API Documentation    | ✅ Hoàn thành |
-| Wireframe Design     | ✅ 31 screens |
-
-### Giai đoạn 2: Authentication & System Management (Tháng 8, 2026) — HOÀN THÀNH
-
-| Module | Công việc                          | Trạng thái    |
-| ------ | ---------------------------------- | ------------- |
-| Auth   | Đăng ký/đăng nhập, JWT, RBAC       | ✅ Hoàn thành |
-| Auth   | Refresh Token, Quên MK, Đăng xuất  | ✅ Hoàn thành |
-| Auth   | Google OAuth 2.0                   | ✅ Hoàn thành |
-| Auth   | Rate Limiting                      | ✅ Hoàn thành |
-| System | Quản lý người dùng (CRUD)          | ✅ Hoàn thành |
-| System | CRUD danh mục (14 catalog tables)  | ✅ Hoàn thành |
-| System | SignalR Notifications              | ✅ Hoàn thành |
-| System | Profile Management + Avatar Upload | ✅ Hoàn thành |
-
-### Giai đoạn 3: Course Management & Assessment (Tháng 9, 2026) — ĐANG THỰC HIỆN
-
-| Module     | Công việc                       | Trạng thái         |
-| ---------- | ------------------------------- | ------------------ |
-| Course     | CRUD khóa học, vòng đời         | ✅ Hoàn thành      |
-| Course     | Cấu trúc Section → Lesson       | ✅ Hoàn thành      |
-| Course     | Upload Video/Document/Thumbnail | ✅ Hoàn thành      |
-| Assessment | Ngân hàng câu hỏi (4 định dạng) | ✅ Hoàn thành      |
-| Assessment | Tạo đề thi, ExamAttempt         | ✅ Hoàn thành      |
-| Assessment | Chấm điểm tự động + thủ công    | ⏳ Đang phát triển |
-| Assessment | Thống kê kết quả                | ⏳ Đang phát triển |
-| Frontend   | Implement UI từ wireframe       | 🔜 Sắp tới         |
-
-### Giai đoạn 4: Payment, AI & Frontend (Tháng 10, 2026)
-
-| Module   | Công việc                            | Trạng thái    |
-| -------- | ------------------------------------ | ------------- |
-| Payment  | VietQR/SePay integration             | ✅ Hoàn thành |
-| Payment  | PaymentOrder, Transaction management | ✅ Hoàn thành |
-| Payment  | Voucher system                       | ✅ Hoàn thành |
-| AI       | Chatbot RAG                          | 🔜 Sắp tới    |
-| AI       | Auto-generate Exam from documents    | 🔜 Sắp tới    |
-| Frontend | Admin Dashboard UI                   | 🔜 Sắp tới    |
-| Frontend | Instructor Course Builder UI         | 🔜 Sắp tới    |
-| Frontend | Student Learning UI                  | 🔜 Sắp tới    |
-| Mobile   | Flutter: Login, Course List          | 🔜 Sắp tới    |
-| Mobile   | Flutter: Video, Exam                 | 🔜 Sắp tới    |
-
-### Giai đoạn 5: Kiểm thử & Triển khai (Tháng 11, 2026)
-
-| Công việc             | Mô tả                                             |
-| --------------------- | ------------------------------------------------- |
-| Unit Test             | Kiểm thử từng module riêng lẻ                     |
-| Integration Test      | Kiểm thử luồng liên module                        |
-| Load Test             | Đánh giá hiệu năng với 1000+ người dùng đồng thời |
-| Security Test         | Kiểm tra bảo mật, xác thực, phân quyền            |
-| Bug Fix               | Sửa lỗi, tối ưu hiệu năng                         |
-| Triển khai Production | Deploy lên server thực tế                         |
-| Tài liệu hướng dẫn    | Hướng dẫn sử dụng cho Admin, Instructor, Student  |
-| Viết báo cáo          | Hoàn thiện luận văn tốt nghiệp                    |
-| Chuẩn bị bảo vệ       | Slide, demo, Q&A                                  |
 
 <a name="liên-hệ"></a>
-
 ## Liên hệ
 
 Mọi thắc mắc, góp ý về đề tài EDUMY, xin vui lòng liên hệ:
@@ -1118,7 +1045,5 @@ Mọi thắc mắc, góp ý về đề tài EDUMY, xin vui lòng liên hệ:
 ## Bản quyền
 
 © 2026 EdumyVietNam. All rights reserved.
-
-**Đề tài khóa luận tốt nghiệp** — Khoa Công nghệ Thông tin, Trường Đại học Công Thương Thành phố Hồ Chí Minh (HUIT)
 
 _Made by Quang Nhat Hung_
